@@ -4,7 +4,7 @@ const connection = require('./connection.js');
 const restaurant = require('../Models/restaurant');
 
 function sync(){
-    console.log('ingresó');
+    console.log('ingreso');
 }
 
 sync();

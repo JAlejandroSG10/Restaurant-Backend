@@ -16,6 +16,7 @@ restaurant.init({
     },
     restaurantNit:{
         type: DataTypes.STRING,
+        unique: true,
         allowNull: false
     },
     restaurantAddress:{
