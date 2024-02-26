@@ -2,9 +2,17 @@ const connection = require('./connection.js');
 
 //models
 const restaurant = require('../Models/restaurant');
+const product = require('../Models/product.js');
 
 function sync(){
-    console.log('ingreso');
+    restaurant.hasMany(product,{
+        foreignKey: 'restaurantId',
+        onDelete: 'restrict',
+        onUpdate: 'cascade'
+    });
+    product.belongsTo(restaurant,{
+        foreignKey: 'restaurantId'
+    });
 }
 
 sync();
