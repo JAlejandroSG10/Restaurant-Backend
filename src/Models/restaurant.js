@@ -4,7 +4,7 @@ const connection = require('../DataBase/connection');
 class restaurant extends Model{}
 
 restaurant.init({
-    retsaurantId:{
+    restaurantId:{
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
