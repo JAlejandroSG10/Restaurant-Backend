@@ -13,16 +13,11 @@ const departmentrouter = require('./Routers/departmentrouter.js');
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-connection.sync({force: false})
-    .then(() => {
-        console.log('Synchronized DataBase');
-        app.listen(port, ()=> {
-            console.log("The aplicattion is running in port: "+ port);
-        })
-    })
-    .catch((error) => {
-        console.error('Error syncing DataBase', error);
-    });
+app.listen(port, ()=> {
+    console.log("The aplicattion is running in port: "+ port);
+})
+
+
 
 // api
 app.use('/api', restaurantrouter);  

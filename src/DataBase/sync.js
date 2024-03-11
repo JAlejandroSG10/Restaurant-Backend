@@ -10,7 +10,7 @@ const city = require('../Models/city.js');
 const departmentjson = require('./jsonFiles/departmentjson.js');
 const cityjson = require('./jsonFiles/cityjson.js');
 
-function sync(){
+async function sync(){
     restaurant.hasMany(product,{
         foreignKey: 'restaurantId',
         onDelete: 'restrict',
@@ -38,6 +38,15 @@ function sync(){
 
     restaurant.belongsTo(city, {
         foreignKey : 'cityId'
+    });
+
+    await connection.sync({force: false})
+    .then(() => {
+        console.log('Synchronized DataBase');
+        
+    })
+    .catch((error) => {
+        console.error('Error syncing DataBase', error);
     });
 
 //Create Json
