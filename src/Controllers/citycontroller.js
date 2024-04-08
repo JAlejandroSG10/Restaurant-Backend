@@ -1,14 +1,16 @@
 require('express');
-const department = require('../Models/department');
+const city = require('../Models/city');
 
-async function listDepartments(req, res){
+async function listCities(req, res){
     try{
-        await department.findAll({
+        await city.findAll({
+            where: {departmentId : req.params.departmentId},
             attributes: [
-                ['departmentId', 'value'],
-                ['departmentName', 'label']
+                ['cityId', 'value'],
+                ['cityName', 'label'],
+                'departmentId'
             ],
-            order: ['departmentName']
+            order: ['cityName']
         }).then(function (data){
             return res.status(200).json({
                 data: data
@@ -25,5 +27,5 @@ async function listDepartments(req, res){
 }
 
 module.exports = {
-    listDepartments
+    listCities
 }
