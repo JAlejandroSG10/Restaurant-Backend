@@ -3,6 +3,7 @@ const restaurant = require('../Models/restaurant');
 //create restuarant
 async function createRestaurant(req, res){
     try{
+        console.log(req.body);
         await restaurant.create({
             restaurantName: req.body.restaurantName,
             restaurantNit: req.body.restaurantNit,
@@ -23,7 +24,33 @@ async function createRestaurant(req, res){
         console.log(e)
     }
 }
-
+async function getRestaurant(req, res){
+    try{
+        await restaurant.findOne({
+            where: {restaurantId : req.params.restaurantId},
+            attributes: [
+                'restaurantId',
+                'restaurantName',
+                'restaurantNit',
+                'restaurantAddress',
+                'restaurantPhone',
+                'cityId'
+            ],
+            //Falta traer el departmentId
+        }).then(function (data){
+            return res.status(200).json({
+                data: data
+            });
+        }).catch(error => {
+            return res.status(400).json({
+                error: error
+            });
+        })
+    }
+    catch(e){
+        console.log(e);
+    }
+}
 
 async function listRestaurant(req, res){
     try{
@@ -117,6 +144,7 @@ async function enableRestaurant(req, res){
 module.exports ={
     createRestaurant,
     listRestaurant,
+    getRestaurant,
     updateRestaurant,
     disableRestaurant,
     enableRestaurant
