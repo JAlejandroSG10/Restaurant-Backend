@@ -20,7 +20,7 @@ user.init({
         unique: true,
         allowNull: false
     },
-    userIdentifiaction: {
+    userIdentificationType: {
         type: DataTypes.STRING,
         allowNull: false,
     },
