@@ -10,6 +10,7 @@ const restaurantrouter = require('./Routers/restaurantrouter.js');
 const productrouter = require('./Routers/productrouter.js');
 const departmentrouter = require('./Routers/departmentrouter.js');
 const cityrouter = require('./Routers/cityrouter.js')
+const userrouter = require('./Routers/userRouter.js')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
@@ -27,3 +28,4 @@ app.use('/api', restaurantrouter);
 app.use('/api', productrouter);
 app.use('/api', departmentrouter);
 app.use('/api', cityrouter);
+app.use('/api', userrouter);
